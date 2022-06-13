@@ -1,0 +1,135 @@
+﻿<Window x:Class="WordleHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WordleHelper"
+        mc:Ignorable="d"
+        Title="Ahmert's Wordle Helper" Height="500" Width="800" Background="Beige" FontFamily="Verdana">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label HorizontalAlignment="Stretch" VerticalAlignment="Center" FontFamily="Showcard Gothic" FontSize="24" Foreground="DarkSlateBlue" MouseDown="Label_MouseDown">WORDLE HELPER</Label>
+        </StackPanel>
+        <StackPanel x:Name="panelLeft" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
+            <Label HorizontalAlignment="Center" FontWeight="Bold">-Previous Guesses-</Label>
+            <Grid x:Name="gridPreviousGuesses" Height="240" Background="AntiqueWhite" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+        </StackPanel>
+        <StackPanel x:Name="panelMidTop" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnInitRestart" Width="80" Height="24" Content="INIT" FontWeight="Bold" Click="BtnInitRestart_Click"></Button>
+                <Label x:Name="lblGuessNum" HorizontalAlignment="Center" Width="230" FontWeight="Bold" HorizontalContentAlignment="Center"></Label>
+                <Button x:Name="btnSubmmit" Width="80" Height="24" Content="SUBMIT" FontWeight="Bold" Click="BtnSubmmit_Click" IsEnabled="False"></Button>
+            </StackPanel>
+            <Grid x:Name="gridMidTop" Margin="0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="tb1" Grid.Column="0" Grid.Row="1" Height="45" FontSize="8"></Label>
+                <Label x:Name="tb2" Grid.Column="1" Grid.Row="1" Height="45" FontSize="8"></Label>
+                <Label x:Name="tb3" Grid.Column="2" Grid.Row="1" Height="45" FontSize="8"></Label>
+                <Label x:Name="tb4" Grid.Column="3" Grid.Row="1" Height="45" FontSize="8"></Label>
+                <Label x:Name="tb5" Grid.Column="4" Grid.Row="1" Height="45" FontSize="8"></Label>
+            </Grid>
+        </StackPanel>
+        <StackPanel x:Name="panelMidBottom" Grid.Row="2" Grid.Column="1">
+            <StackPanel Height="120" Orientation="Horizontal">
+                <ListBox x:Name="lbSuggestions" Width="90" Height="120" MouseDoubleClick="LbSuggestions_MouseDoubleClick" FontSize="9" ScrollViewer.VerticalScrollBarVisibility="Hidden"></ListBox>
+                <StackPanel Margin="0 10">
+                    <Button x:Name="btnSuggestModeSmart" Height="20" Content=">" Width="30" Click="BtnSuggestModeSmart_Click"/>
+                    <Label Content="SMART" Margin="-20,40" FontSize="8" FontWeight="Bold" HorizontalContentAlignment="Right" Height="20" RenderTransformOrigin="0.5,0.5" Width="80" >
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </StackPanel>
+                <ListBox x:Name="lbSuggestionsAvg" Width="60" Height="120"></ListBox>
+                <StackPanel Margin="0 10">
+                    <Button x:Name="btnSuggestModeYellow" Height="20" Content=">" Width="30" Click="BtnSuggestModeYellow_Click"/>
+                    <Label Content="YELLOW" Margin="-20,40" FontSize="8" FontWeight="Bold" HorizontalContentAlignment="Right" Width="80" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </StackPanel>
+                <ListBox x:Name="lbSuggestionsMin" Width="60" Height="120"  FontSize="9" ScrollViewer.VerticalScrollBarVisibility="Hidden"></ListBox>
+                <StackPanel Margin="0 10">
+                    <Button x:Name="btnSuggestModeGreen" Height="20" Content=">" Width="30" Click="BtnSuggestModeGreen_Click"/>
+                    <Label Content="GREEN" Margin="-20,40" FontSize="8" FontWeight="Bold" Width="80" HorizontalContentAlignment="Right" RenderTransformOrigin="0.5,0.5">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </StackPanel>
+                <ListBox x:Name="lbSuggestionsCoef" Width="60" Height="120" FontSize="9" ScrollViewer.VerticalScrollBarVisibility="Hidden"></ListBox>
+            </StackPanel>
+            <Grid x:Name="gridKeyboard" Height="74">
+
+            </Grid>
+        </StackPanel>
+        <StackPanel x:Name="panelRight" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2">
+            <Label x:Name="lblWordsCandidateCount" Height="24" HorizontalAlignment="Center"></Label>
+            <ListBox x:Name="lbRemainingWords" Height="300" Margin="10" MouseDoubleClick="LbRemainingWords_MouseDoubleClick"></ListBox>
+        </StackPanel>
+        <StackPanel x:Name="panelInfo" Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label x:Name="lblVersion" HorizontalAlignment="Right" Margin="0 0 20 0" FontWeight="Bold" VerticalAlignment="Center" FontStyle="Italic">v 1.0</Label>
+        </StackPanel>
+    </Grid>
+
+</Window>

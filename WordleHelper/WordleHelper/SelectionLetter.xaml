@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="WordleHelper.SelectionLetter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WordleHelper"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="60">
+    <StackPanel>
+        <StackPanel Width="60" Height="60">
+            <TextBox x:Name="txtLetter" Width="58" Height="58" Background="White" FontFamily="Verdana" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" TextAlignment="Center" MaxLength="1" TextChanged="TxtLetter_TextChanged"/>
+        </StackPanel>
+        <StackPanel Width="60" Height="20" Orientation="Horizontal">
+            <Button x:Name="btnGray" Width="20" Height="16" Background="Gray" Click="BtnGray_Click"></Button>
+            <Button x:Name="btnYellow" Width="20" Height="16" Background="Yellow" Click="BtnYellow_Click"></Button>
+            <Button x:Name="btnGreen" Width="20" Height="16" Background="Green" Click="BtnGreen_Click"></Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
